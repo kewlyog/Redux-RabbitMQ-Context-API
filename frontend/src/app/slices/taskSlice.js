@@ -6,6 +6,11 @@ export const fetchTasks = createAsyncThunk("tasks/fetchTasks", async () => {
     return res.data;
 });
 
+export const addTask = createAsyncThunk("tasks/addTask", async (task) => {
+    const res = await axios.post("http://localhost:5004/api/tasks", task);
+    return res.data;
+})
+
 const taskSlice = createSlice({
     name: "tasks",
     initialState: { list: [], status: "idle" },
@@ -15,7 +20,7 @@ const taskSlice = createSlice({
             .addCase(fetchTasks.fulfilled, (state, action) => {
                 state.list = action.payload;
             })
-            .addCase(addTasks.fulfilled, (state, action) => {
+            .addCase(addTask.fulfilled, (state, action) => {
                 state.list.push(action.payload);
             });
     },

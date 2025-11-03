@@ -7,7 +7,7 @@ import './config/rabbitmq.js'; // initialize connection
 
 dotenv.config();
 
-const PORT = process.env.PORT || 5005;
+const PORT = process.env.PORT || 5004;
 
 const app = express();
 app.use(express.json());
